@@ -18,7 +18,7 @@ out vec4 FragColor;
 
 void main() {
 	float ambientStrength = 0.2;
-	float specularStrength = 0.5;
+	float specularStrength = 0.7;
 
 	vec3 total_light = ambientStrength * lightColor;
 
@@ -34,7 +34,7 @@ void main() {
 
 	if (specLightOn) {
 		vec3 reflectDir = reflect(-lightDir, norm);
-		float spec = pow(max(dot(viewDir, reflectDir), 0.0), 64);
+		float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
 		vec3 specular = specularStrength * spec * lightColor;
 		total_light = total_light + specular;
 	}
